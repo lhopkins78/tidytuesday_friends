@@ -5,8 +5,8 @@ library(cowplot)
 
 #stuff to be used later
 `%notin%` <- Negate(`%in%`)
-main_cast <- c("Ross Geller", "Rachel Green", "Joey Tribbiani", "Chandler Bing", "Phoebe Buffay")
-f_cols <- c("#e91e23", "#02b2e7", "#fabc16", "#43C59E","#2B3A67")
+main_cast <- c("Ross Geller", "Rachel Green", "Joey Tribbiani", "Chandler Bing", "Phoebe Buffay", "Monica Geller")
+f_cols <- c("#e91e23", "#02b2e7", "#2E1F27", "#fabc16", "#43C59E","#2B3A67")
 
 #words without stop words
 friends_words_stop <- friends %>% unnest_tokens(word, text) %>%
@@ -28,12 +28,13 @@ img_joey <- "https://img.bricklink.com/ItemImage/MN/0/idea060.png"
 img_rachel <- "https://img.bricklink.com/ItemImage/MN/0/idea059.png"
 img_ross <- "https://img.bricklink.com/ItemImage/MN/0/idea056.png"
 img_phoebe <- "https://img.bricklink.com/ItemImage/MN/0/idea061.png"
+img_monica <- "https://img.bricklink.com/ItemImage/MN/0/idea057.png"
 
 p1 <- ggplot(friends_word_count_season, aes(y=perc, x=factor(season), fill=speaker, group=speaker)) + 
   geom_area() + scale_fill_manual(values=f_cols) +
   theme_minimal() + 
   facet_wrap(~speaker, nrow=1) +
-  labs(title="Democratic speech?", subtitle="Word share for the big five in Friends by season",
+  labs(title="Democratic speech?", subtitle="Word share for the big six in Friends by season",
        x="Season", y="") +
   theme(legend.position="none",
     text=element_text(family="Avenir", size=14),
@@ -42,9 +43,10 @@ p1 <- ggplot(friends_word_count_season, aes(y=perc, x=factor(season), fill=speak
 
 ggdraw() +
   draw_plot(p1) +
-  draw_image(img_joey, scale=0.25, y=-0.2, x=-0.175) +
-  draw_image(img_bing, scale=0.25, y=-0.2, x=-0.366) +
-  draw_image(img_phoebe, scale=0.25, y=-0.2, x=0.016) +
-  draw_image(img_rachel, scale=0.25, y=-0.2, x=+0.21) +
-  draw_image(img_ross, scale=0.25, y=-0.2, x=+0.402) 
+  draw_image(img_joey, scale=0.22, y=-0.2, x=-0.213) +
+  draw_image(img_bing, scale=0.22, y=-0.2, x=-0.371) +
+  draw_image(img_phoebe, scale=0.22, y=-0.2, x=0.102) +
+  draw_image(img_monica, scale=0.22, y=-0.2, x=-0.055) +
+  draw_image(img_rachel, scale=0.22, y=-0.2, x= 0.26) +
+  draw_image(img_ross, scale=0.22, y=-0.2, x=+0.417) 
 ggsave("friends.png")
