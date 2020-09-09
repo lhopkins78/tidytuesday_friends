@@ -42,9 +42,9 @@ p1 <- ggplot(friends_word_count_season, aes(y=perc, x=factor(season), fill=speak
 
 ggdraw() +
   draw_plot(p1) +
-  draw_image(img_joey, scale=0.25, y=-0.2, x=-0.165) +
-  draw_image(img_bing, scale=0.25, y=-0.2, x=-0.355) +
-  draw_image(img_phoebe, scale=0.25, y=-0.2, x=0.024) +
+  draw_image(img_joey, scale=0.25, y=-0.2, x=-0.175) +
+  draw_image(img_bing, scale=0.25, y=-0.2, x=-0.366) +
+  draw_image(img_phoebe, scale=0.25, y=-0.2, x=0.016) +
   draw_image(img_rachel, scale=0.25, y=-0.2, x=+0.21) +
-  draw_image(img_ross, scale=0.25, y=-0.2, x=+0.4) 
+  draw_image(img_ross, scale=0.25, y=-0.2, x=+0.402) 
 ggsave("friends.png")
